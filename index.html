@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammed Nabil El Korso — Professor, Statistical Signal Processing</title>
+<meta name="description" content="Mohammed Nabil El Korso, Professor at Paris-Saclay University (CentraleSupélec, L2S–CNRS). Statistical machine learning, statistical inference and signal processing — robust estimation, missing data, and applications to climate data analysis, radio-astronomy and Earth observation." />
+<meta name="author" content="Mohammed Nabil El Korso" />
+
+<!-- Open Graph / social preview — replace assets/photo.jpg once you add a headshot (see README) -->
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Mohammed Nabil El Korso — Professor, Statistical Signal Processing" />
+<meta property="og:description" content="Professor at Paris-Saclay University (CentraleSupélec, L2S–CNRS). Statistical machine learning, statistical inference and signal processing, with applications to climate data analysis, radio-astronomy and Earth observation." />
+<meta property="og:image" content="assets/photo.jpg" />
+<meta name="twitter:card" content="summary" />
+
+<!--
+  ============================================================
+  RÉFÉRENCEMENT GOOGLE (SEO) — à faire une fois le site en ligne :
+  1) Remplacez "https://VOTRE-USERNAME.github.io/" ci-dessous par
+     l'URL réelle de votre site (voir README-DEPLOIEMENT.md).
+  2) Ajoutez le site dans Google Search Console et demandez
+     l'indexation de cette page.
+  ============================================================
+-->
+<link rel="canonical" href="https://VOTRE-USERNAME.github.io/" />
+
+<!-- Données structurées — aident Google à comprendre qui vous êtes -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohammed Nabil El Korso",
+  "givenName": "Mohammed Nabil",
+  "familyName": "El Korso",
+  "jobTitle": "Professor",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Paris-Saclay University — CentraleSupélec (L2S, CNRS)"
+  },
+  "email": "mailto:mohammed.nabil.el-korso@centralesupelec.fr",
+  "url": "https://VOTRE-USERNAME.github.io/",
+  "sameAs": [
+    "https://scholar.google.com/citations?hl=fr&user=JEhRT6kAAAAJ",
+    "https://dblp.org/pid/68/8054.html",
+    "https://l2s.centralesupelec.fr/en/u/el-korso-mohammed-nabil/"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     JETONS DE DESIGN (couleurs, typo) — modifiez ici pour changer
+     l'apparence de tout le site en une seule fois.
+     ============================================================ */
+  :root{
+    --ink:      #10192b;   /* texte principal — bleu marine encre */
+    --paper:    #eef0f3;   /* fond de page — papier bleu-gris clair */
+    --surface:  #ffffff;   /* fond des blocs/cartes */
+    --accent:   #96762b;   /* accent laiton/or — liens, libellés */
+    --accent-soft: #e4dcc4;/* teinte laiton claire — fonds discrets */
+    --line:     #cfd3d8;   /* filets fins / bordures */
+    --muted:    #5b6472;   /* texte secondaire — dates, revues */
+    --shadow: 0 1px 2px rgba(16,25,43,.04), 0 8px 24px -12px rgba(16,25,43,.18);
+
+    --font-display: "Piazzolla", "Iowan Old Style", "Palatino Linotype", serif;
+    --font-body: "STIX Two Text", "Palatino Linotype", "Georgia", serif;
+    --font-ui: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+    --measure: 40rem;
+    --wrap: 74rem;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:      #e9e7de;
+      --paper:    #0b1220;
+      --surface:  #121a2b;
+      --accent:   #c7a04a;
+      --accent-soft: #2c2612;
+      --line:     #253044;
+      --muted:    #93a0b0;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:      #e9e7de;
+    --paper:    #0b1220;
+    --surface:  #121a2b;
+    --accent:   #c7a04a;
+    --accent-soft: #2c2612;
+    --line:     #253044;
+    --muted:    #93a0b0;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.6);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; text-wrap:balance; margin:0; }
+  p{ margin:0; }
+
+  .wrap{ max-width:var(--wrap); margin-inline:auto; padding-inline:1.75rem; }
+  @media (max-width:640px){ .wrap{ padding-inline:1.25rem; } }
+
+  .label{
+    font-family:var(--font-ui);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  .hairline{ border:none; border-top:1px solid var(--line); margin:0; }
+
+  /* ---------- Skip link (a11y) ---------- */
+  .skip-link{
+    position:absolute; left:1rem; top:-3rem;
+    background:var(--surface); color:var(--ink);
+    padding:.6rem 1rem; border:1px solid var(--line);
+    font-family:var(--font-ui); font-size:.85rem;
+    transition:top .15s ease; z-index:100;
+  }
+  .skip-link:focus{ top:1rem; }
+
+  /* ---------- Nav ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:3.75rem; gap:1rem; }
+  .brandmark{
+    font-family:var(--font-mono); font-size:.95rem; font-weight:500;
+    letter-spacing:.02em; text-decoration:none; color:var(--ink);
+    border:1px solid var(--line); padding:.25rem .55rem;
+  }
+  .brandmark span{ color:var(--accent); }
+  .nav-links{ display:flex; gap:1.6rem; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-family:var(--font-ui); font-size:.83rem; font-weight:500;
+    text-decoration:none; color:var(--muted);
+    padding-bottom:.3rem; border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible, .nav-links a.is-active{
+    color:var(--ink); border-color:var(--accent);
+  }
+  .nav-toggle{ display:none; }
+  @media (max-width:760px){
+    .nav-links{
+      display:none; position:absolute; top:3.75rem; left:0; right:0;
+      flex-direction:column; gap:0; background:var(--surface);
+      border-bottom:1px solid var(--line); padding:.5rem 1.25rem 1.25rem;
+    }
+    .nav-links.is-open{ display:flex; }
+    .nav-links a{ padding:.7rem 0; border-bottom:1px solid var(--line); }
+    .nav-toggle{
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:none; border:1px solid var(--line); color:var(--ink);
+      font-family:var(--font-ui); font-size:.8rem; padding:.4rem .7rem; cursor:pointer;
+    }
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead{ padding:4.5rem 0 3.5rem; }
+  .masthead .wrap{
+    display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:end;
+  }
+  .masthead h1{ font-size:clamp(2.4rem, 5.2vw, 4.1rem); line-height:1.03; letter-spacing:-.01em; }
+  .tagline{
+    font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:clamp(1.05rem,2vw,1.3rem); color:var(--muted); margin-top:.85rem;
+  }
+  .affil{ font-family:var(--font-ui); font-size:.9rem; color:var(--muted); margin-top:.6rem; }
+  .affil strong{ color:var(--ink); font-weight:600; }
+
+  .quicklinks{ display:flex; flex-wrap:wrap; gap:.6rem 1.1rem; margin-top:1.5rem; }
+  .quicklinks a{
+    font-family:var(--font-ui); font-size:.82rem; font-weight:500;
+    text-decoration:none; color:var(--ink);
+    border-bottom:1px solid var(--accent); padding-bottom:.1rem;
+  }
+  .quicklinks a:hover{ color:var(--accent); }
+
+  .portrait{
+    width:20.5rem; height:22rem; border:1px solid var(--line);
+    background:var(--surface); box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-size:2.1rem; color:var(--accent);
+    overflow:hidden; flex-shrink:0;
+  }
+  .portrait img{ width:100%; height:100%; object-fit:cover; }
+  @media (max-width:640px){
+    .masthead .wrap{ grid-template-columns:1fr; }
+    .portrait{ order:-1; width:6rem; height:6rem; font-size:1.4rem; }
+  }
+
+  .stats{
+    margin-top:2.6rem; padding-top:1.6rem; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:.5rem 2.4rem;
+    font-family:var(--font-mono); font-variant-numeric:tabular-nums;
+  }
+  .stats .num{ font-size:1.5rem; color:var(--ink); }
+  .stats .stat-label{ font-family:var(--font-ui); font-size:.72rem; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; }
+  .stat-item{ display:flex; flex-direction:column; gap:.15rem; }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:3.6rem 0; border-top:1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+  .section-head h2{ font-size:clamp(1.5rem,2.6vw,1.9rem); }
+  .section-head .see-more{ font-family:var(--font-ui); font-size:.82rem; color:var(--muted); text-decoration:none; }
+  .section-head .see-more:hover{ color:var(--accent); }
+  .lede{ font-size:1.05rem; max-width:var(--measure); color:var(--ink); }
+
+  /* ---------- Research cards ---------- */
+  .research-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .research-card{ background:var(--surface); padding:1.9rem 1.7rem; display:flex; flex-direction:column; gap:.8rem; }
+  .research-card h3{ font-size:1.12rem; }
+  .research-card p{ font-size:.95rem; color:var(--muted); line-height:1.55; }
+  @media (max-width:800px){ .research-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- News ---------- */
+  .news-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+  .news-item{ display:grid; grid-template-columns:6.5rem 1fr; gap:1.4rem; padding:1.1rem 0; border-top:1px solid var(--line); }
+  .news-item:first-child{ border-top:none; }
+  .news-date{ font-family:var(--font-mono); font-size:.85rem; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .news-body{ font-size:.98rem; }
+  @media (max-width:520px){ .news-item{ grid-template-columns:1fr; gap:.3rem; } }
+
+  /* ---------- Publications ---------- */
+  .pub-year{ font-family:var(--font-mono); font-size:.95rem; color:var(--accent); margin:2.1rem 0 .9rem; }
+  .pub-year:first-child{ margin-top:0; }
+  .pub-list{ list-style:none; margin:0; padding:0; }
+  .pub-item{ padding:1.15rem 0; border-top:1px solid var(--line); }
+  .pub-list .pub-item:first-child{ border-top:none; }
+  .pub-title{ font-family:var(--font-body); font-weight:600; font-size:1.03rem; line-height:1.45; }
+  .pub-authors{ font-size:.93rem; color:var(--ink); margin-top:.3rem; }
+  .pub-authors .self{ color:var(--accent); font-weight:600; }
+  .pub-venue{ font-family:var(--font-ui); font-size:.78rem; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; margin-top:.4rem; }
+  .pub-links{ display:flex; gap:.55rem; margin-top:.65rem; flex-wrap:wrap; }
+  .pub-links a{
+    font-family:var(--font-ui); font-size:.75rem; font-weight:500;
+    text-decoration:none; color:var(--ink); border:1px solid var(--line);
+    padding:.28rem .6rem; transition:border-color .15s ease, color .15s ease;
+  }
+  .pub-links a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ---------- Service / Teaching ---------- */
+  .plain-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.85rem; max-width:var(--wrap); }
+  .plain-list li{ padding-left:1.1rem; border-left:2px solid var(--accent-soft); font-size:.98rem; }
+  .plain-list li strong{ font-weight:600; }
+
+  .note-box{
+    border:1px dashed var(--line); padding:1.1rem 1.3rem; font-family:var(--font-ui);
+    font-size:.85rem; color:var(--muted); margin-top:1.4rem;
+  }
+
+  /* ---------- Talks ---------- */
+  .talk-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+  .talk-item{ padding:1.3rem 0; border-top:1px solid var(--line); }
+  .talk-list .talk-item:first-child{ border-top:none; }
+  .talk-title{ font-family:var(--font-body); font-weight:600; font-size:1.03rem; line-height:1.45; }
+  .talk-meta{ font-family:var(--font-ui); font-size:.78rem; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; margin-top:.4rem; }
+  .talk-links{ display:flex; gap:.55rem; margin-top:.65rem; flex-wrap:wrap; align-items:center; }
+  .talk-links a{
+    font-family:var(--font-ui); font-size:.75rem; font-weight:500;
+    text-decoration:none; color:var(--ink); border:1px solid var(--line);
+    padding:.28rem .6rem; transition:border-color .15s ease, color .15s ease;
+  }
+  .talk-links a:hover{ border-color:var(--accent); color:var(--accent); }
+  .talk-links .pending{
+    font-family:var(--font-ui); font-size:.75rem; color:var(--muted);
+    border:1px dashed var(--line); padding:.28rem .6rem;
+  }
+
+  /* ---------- Advising / alumni ---------- */
+  .adv-group{ margin-top:2.1rem; }
+  .adv-group:first-child{ margin-top:0; }
+  .adv-heading{ font-family:var(--font-ui); font-size:.72rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:.9rem; }
+  .adv-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
+  .adv-list li{ padding-left:1.1rem; border-left:2px solid var(--line); font-size:.95rem; }
+  .adv-list li strong{ font-weight:600; }
+  .adv-years{ font-family:var(--font-mono); font-size:.82rem; color:var(--accent); font-variant-numeric:tabular-nums; }
+
+  /* ---------- All publications (full list) ---------- */
+  .ap-cat{ font-family:var(--font-ui); font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin:2.6rem 0 .9rem; }
+  .ap-cat:first-child{ margin-top:0; }
+  .ap-list{ list-style:none; margin:0 0 0; padding:0; }
+  .ap-item{ padding:.85rem 0; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; align-items:baseline; gap:.5rem 1rem; }
+  .ap-list .ap-item:first-child{ border-top:none; }
+  .ap-text{ font-family:var(--font-body); font-size:.93rem; line-height:1.55; flex:1 1 28rem; }
+  .ap-links a{
+    font-family:var(--font-ui); font-size:.72rem; font-weight:500;
+    text-decoration:none; color:var(--muted); border:1px solid var(--line);
+    padding:.22rem .55rem; white-space:nowrap; transition:border-color .15s ease, color .15s ease;
+  }
+  .ap-links a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ---------- Contact / footer ---------- */
+  footer{ padding:3.6rem 0 3rem; border-top:1px solid var(--line); }
+  .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:2.5rem; }
+  @media (max-width:700px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-list{ list-style:none; margin:1rem 0 0; padding:0; font-size:.95rem; display:flex; flex-direction:column; gap:.5rem; }
+  .contact-list a{ text-decoration:none; border-bottom:1px solid var(--line); }
+  .contact-list a:hover{ border-color:var(--accent); color:var(--accent); }
+  .colophon{ margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line); font-family:var(--font-ui); font-size:.78rem; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(10px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="brandmark" href="#top">MN<span>·</span>EK</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============================================================
+       MASTHEAD / À PROPOS
+       - Nom, fonction, affiliation : modifiez le texte directement.
+       - Photo : remplacez le bloc .portrait (voir commentaire plus bas).
+       ============================================================ -->
+  <header class="masthead" id="top">
+    <div class="wrap">
+      <div id="about">
+        <p class="label">Professor · Statistical Machine Learning &amp; Signal Processing</p>
+        <h1>Mohammed Nabil<br />El Korso</h1>
+        <p class="tagline">Statistical inference and generative AI for robust learning with incomplete, noisy, mismatched data, applied to radio-astronomy, climate data analysis and Earth observation.</p>
+        <p class="affil"><strong>Paris-Saclay University</strong> — CentraleSupélec · Laboratoire des Signaux et Systèmes (L2S, CNRS)</p>
+
+        <div class="quicklinks">
+          <a href="mailto:mohammed.nabil.el-korso@centralesupelec.fr">Email</a>
+          <a href="https://scholar.google.com/citations?hl=fr&amp;user=JEhRT6kAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/nabkorso/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <!--
+        PHOTO : pour ajouter votre portrait, placez un fichier
+        "photo.jpg" dans un dossier "assets/" à côté de ce fichier,
+        puis remplacez la ligne juste en dessous par :
+        <img src="assets/photo.jpg" alt="Mohammed Nabil El Korso" />
+      -->
+          <div class="portrait">
+      <img src="assets/photo.png" alt="Mohammed Nabil El Korso" />
+    </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       NEWS — le plus récent en premier.
+       AJOUTER UNE ENTRÉE : copiez un bloc <li class="news-item">…</li>
+       et modifiez la date + le texte.
+       ============================================================ -->
+  <section id="news" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>News</h2></div>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span class="news-body">Appointed Technical Co-Chair of the <strong>2027 IEEE Statistical Signal Processing Workshop (SSP 2027)</strong>. <a href="https://ssp27.ieeesps.org/" target="_blank" rel="noopener" style="color:var(--accent);">ssp27.ieeesps.org →</a></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span class="news-body">New tutorial article, <em>“Missing Data in Signal Processing and Machine Learning: Models, Methods, and Modern Approaches,”</em> accepted in <strong>IEEE Signal Processing Magazine</strong>. <a href="https://doi.org/10.1109/MSP.2026.3682182" target="_blank" rel="noopener" style="color:var(--accent);">DOI →</a></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span class="news-body">Paper accepted at <strong>ICLR 2026</strong>: <em>“Fisher-Rao Sensitivity for Out-of-Distribution Detection in Deep Neural Networks.”</em> <a href="https://openreview.net/forum?id=GEtOzC4MIi" target="_blank" rel="noopener" style="color:var(--accent);">OpenReview →</a></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span class="news-body">New ANR project funded — <strong>COMRADE</strong> (Covariance Matrices and Deep Learning for Earth Observation), starting 2027.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span class="news-body">Appointed <strong>CNRS Scientific Delegate</strong>, Section 3.</span>
+        </li>
+        <!-- <li class="news-item"><span class="news-date">MOIS AAAA</span><span class="news-body">Votre texte ici.</span></li> -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RECHERCHE — trois axes, dans l'ordre de priorité actuel
+       (machine learning en premier). Pour en modifier un, éditez
+       le texte à l'intérieur d'un bloc <div class="research-card">.
+       ============================================================ -->
+  <section id="research" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>Research</h2></div>
+      <div class="research-grid">
+        <div class="research-card">
+          <h3>Statistical machine learning</h3>
+          <p>Generative models, learning under distribution shift, and out-of-distribution detection in deep neural networks.</p>
+        </div>
+        <div class="research-card">
+          <h3>Statistical inference &amp; signal processing</h3>
+          <p>Robust and adaptive estimation/detection theory, inference with missing data, and low-rank / structured covariance models.</p>
+        </div>
+        <div class="research-card">
+          <h3>Applications</h3>
+          <p>Climate data analysis, radio-astronomy interferometric imaging, Earth observation, and array processing (radar, SAR).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PUBLICATIONS SÉLECTIONNÉES — mises en avant, dans l'ordre
+       choisi (pas un ordre chronologique). La liste complète est
+       dans la section "All publications" tout en bas de la page.
+       AJOUTER UNE PUBLICATION : copiez un bloc <li class="pub-item">…</li>
+       et modifiez titre / auteurs / revue / liens.
+       ============================================================ -->
+  <section id="publications" class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected publications</h2>
+        <a class="see-more" href="#all-publications">All publications ↓</a>
+      </div>
+      <p class="lede">A curated selection of recent and representative work. The complete list — journal articles, conference papers, book chapters and books — is on this page in full, <a href="#all-publications" style="color:var(--accent);">further down</a>, and also on <a href="https://scholar.google.com/citations?hl=fr&amp;user=JEhRT6kAAAAJ" target="_blank" rel="noopener" style="color:var(--accent);">Google Scholar</a> and <a href="https://dblp.org/pid/68/8054.html" target="_blank" rel="noopener" style="color:var(--accent);">DBLP</a>.</p>
+
+      <ul class="pub-list">
+        <li class="pub-item">
+          <p class="pub-title">Missing Data in Signal Processing and Machine Learning: Models, Methods, and Modern Approaches</p>
+          <p class="pub-authors"><span class="self">M. N. El Korso</span>, A. Hippert-Ferrer, A. Sportisse, A. Javaheri, D. P. Palomar</p>
+          <p class="pub-venue">IEEE Signal Processing Magazine, vol. 43, no. 4 · 2026</p>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1109/MSP.2026.3682182" target="_blank" rel="noopener">DOI</a>
+            <a href="https://arxiv.org/abs/2506.01696" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">Fisher-Rao Sensitivity for Out-of-Distribution Detection in Deep Neural Networks</p>
+          <p class="pub-authors">A. Nguyen, A. Bertrand, S. Le Hégarat-Mascle, E. Aldea, F. Florin, <span class="self">M. N. El Korso</span>, R. Lustrat</p>
+          <p class="pub-venue">ICLR 2026 Conference</p>
+          <div class="pub-links">
+            <a href="https://openreview.net/forum?id=GEtOzC4MIi" target="_blank" rel="noopener">OpenReview</a>
+          </div>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">Elliptically Symmetric Distributions in Signal Processing and Machine Learning</p>
+          <p class="pub-authors">J.-P. Delmas, <span class="self">M. N. El Korso</span>, F. Pascal, S. Fortunati</p>
+          <p class="pub-venue">Book, Springer Nature · December 2024</p>
+          <div class="pub-links">
+            <a href="https://link.springer.com/book/10.1007/978-3-031-52116-4" target="_blank" rel="noopener">Springer</a>
+          </div>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">Amortized Variational Inference for Logistic Regression with Missing Covariates</p>
+          <p class="pub-authors">M. Cherifi, A. Sportisse, X. Zhu, <span class="self">M. N. El Korso</span>, A. Mesloub</p>
+          <p class="pub-venue">arXiv preprint arXiv:2603.21244</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2603.21244" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://scholar.google.fr/citations?view_op=view_citation&amp;hl=fr&amp;user=JEhRT6kAAAAJ&amp;sortby=pubdate&amp;citation_for_view=JEhRT6kAAAAJ:7wO8s98CvbsC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </li>
+        <li class="pub-item">
+          <p class="pub-title">Robust Low-Rank Covariance Matrix Estimation with a General Pattern of Missing Values</p>
+          <p class="pub-authors">A. Hippert-Ferrer, <span class="self">M. N. El Korso</span>, A. Breloy, G. Ginolhac</p>
+          <p class="pub-venue">Signal Processing, vol. 195, p. 108460 · 2022</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2107.10505" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://scholar.google.fr/citations?view_op=view_citation&amp;hl=fr&amp;user=JEhRT6kAAAAJ&amp;cstart=20&amp;pagesize=80&amp;sortby=pubdate&amp;citation_for_view=JEhRT6kAAAAJ:8d8msizDQcsC" target="_blank" rel="noopener">Scholar</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SELECTED TALKS
+       AJOUTER UN LIEN (Dropbox, YouTube…) : remplacez le
+       <span class="pending"> correspondant par un <a href="...">.
+       ============================================================ -->
+  <section id="talks" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>Selected talks</h2></div>
+      <ul class="talk-list">
+        <li class="talk-item">
+          <p class="talk-title">Learning for Physics Inverse Problems Under Latent Variable Representation: From ML to Generative AI</p>
+          <p class="talk-meta">AI Grid Summer School · July 2026</p>
+          <div class="talk-links">
+            <a href="https://www.dropbox.com/scl/fi/yukd90g2csh9f1n2p29w0/DATA_IA_Summer_School.pdf?rlkey=sd1fo7qlmfp32qja7uae4m3wo&dl=0" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </li>
+        <li class="talk-item">
+          <p class="talk-title">Covariance &amp; Subspace Inference: Handling Robustness, Variability and Missingness</p>
+          <p class="talk-meta">IHES · 2023</p>
+          <div class="talk-links">
+            <!-- Remplacez la ligne ci-dessous par : <a href="VOTRE-LIEN-YOUTUBE" target="_blank" rel="noopener">Video</a> -->
+            <a href="https://www.youtube.com/watch?v=MUsLDX08oJg&t=1245s" target="_blank" rel="noopener">Video</a>
+            <a href="https://www.dropbox.com/scl/fi/mmgpxsyvoaq3l32g43vr8/EL_KORSO_2023.pdf?rlkey=dmyxlx0ggjaf87bav38zat12x&dl=0" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EDITORIAL ACTIVITIES
+       ============================================================ -->
+  <section id="service" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>Editorial activities</h2></div>
+      <ul class="plain-list">
+        <li><span class="adv-years">2024–</span> &nbsp;<strong>Senior Area Editor</strong> — IEEE Signal Processing Letters</li>
+        <li><span class="adv-years">2023–2025</span> &nbsp;<strong>Associate Editor</strong> — IEEE Transactions on Signal Processing</li>
+        <li><span class="adv-years">2019–</span> &nbsp;<strong>Handling Editor</strong> — Signal Processing, Elsevier</li>
+        <li><span class="adv-years">2026–</span> &nbsp;<strong>EURASIP Academy Mentor</strong></li>
+        <li><span class="adv-years">2024–</span> &nbsp;<strong>Associate Member</strong> — TAC-SPMuS, EURASIP</li>
+        <li><span class="adv-years">2026–</span> &nbsp;<strong>Board Member</strong> — GRETSI Association</li>
+        <!-- <li><span class="adv-years">AAAA–</span> &nbsp;<strong>Rôle</strong> — Description.</li> -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ENSEIGNEMENT
+       ============================================================ -->
+  <section id="teaching" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>Teaching</h2></div>
+
+      <div class="adv-group">
+        <p class="adv-heading">Current courses</p>
+        <ul class="adv-list">
+          <li>Computational statistics for signal &amp; image processing — M2 ATSI, Paris-Saclay University / CentraleSupélec</li>
+          <li>Robust statistics for signal processing — M2 ATSI, Paris-Saclay University / CentraleSupélec — <a href="https://www.dropbox.com/scl/fo/2zs53m7rbs6acp41ruxya/h?rlkey=se0j3bntwwg7an52nisxxy494&amp;dl=0" target="_blank" rel="noopener" style="color:var(--accent);">course materials</a></li>
+          <li>Traitement du signal (TPs) — M1 E3A, Paris-Saclay University — <a href="https://www.dropbox.com/scl/fo/2zs53m7rbs6acp41ruxya/h?rlkey=se0j3bntwwg7an52nisxxy494&amp;dl=0" target="_blank" rel="noopener" style="color:var(--accent);">course materials</a></li>
+        </ul>
+      </div>
+
+      <div class="adv-group">
+        <p class="adv-heading">Past courses</p>
+        <ul class="adv-list">
+          <li>Advanced signal processing with hypothesis testing — M1 EESC, Université Paris Nanterre</li>
+          <li>Expectation-maximization algorithms and robust statistical learning applications — M2 ATSI, Université Paris-Saclay</li>
+          <li>Digital signal processing — S4, IUT de Ville d'Avray</li>
+          <li>Electronics and signal processing — S3, IUT de Ville d'Avray</li>
+          <li>Software tools advancement — S3, IUT de Ville d'Avray</li>
+          <li>Statistics and reliability — Licence professionnelle, IUT de Ville d'Avray</li>
+          <li>Industrial computing — S1, IUT de Ville d'Avray</li>
+          <li>Digital electronics — S1, IUT de Ville d'Avray</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ADVISING & ALUMNI
+       ============================================================ -->
+  <section id="advising" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>Advising &amp; alumni</h2></div>
+
+      <div class="adv-group">
+        <p class="adv-heading">Current PhD students</p>
+        <ul class="adv-list">
+          <li><span class="adv-years">2026–</span> &nbsp;<strong>Louis-Ferdinand Marignier</strong> — New geometries beyond Riemannian geometry: application to statistical learning on manifolds</li>
+          <li><span class="adv-years">2025–</span> &nbsp;<strong>Weixi Sun</strong> — Non-stationary statistical learning for climate downscaling with climate change</li>
+          <li><span class="adv-years">2025–</span> &nbsp;<strong>Duong Nguyen</strong> — Climate projections using generative models</li>
+          <li><span class="adv-years">2025–</span> &nbsp;<strong>Antonin Bertrand</strong> — Application of information geometry to sonar data</li>
+          <li><span class="adv-years">2025–</span> &nbsp;<strong>Anas Ibrahim</strong> — Contributions to robust processing through subspace learning and data completion</li>
+          <li><span class="adv-years">2023–</span> &nbsp;<strong>Mohamed Cherifi</strong> — Statistical learning under generalized linear model with missing covariate for hyperspectral image classification</li>
+        </ul>
+      </div>
+
+      <div class="adv-group">
+        <p class="adv-heading">Current postdoctoral researchers</p>
+        <ul class="adv-list">
+          <li><span class="adv-years">Jan. 2026–</span> &nbsp;<strong>Jihanne El Haouari</strong> — Statistical learning for cosmological exploration at 21 cm</li>
+          <li><span class="adv-years">Nov. 2025–</span> &nbsp;<strong>Preeti Meena</strong> — Radar detection through rectified flow matching</li>
+          <li><span class="adv-years">Oct. 2025–</span> &nbsp;<strong>Pradeebane Vaittinada Ayar</strong> — Model-based statistical downscaling</li>
+        </ul>
+      </div>
+
+      <div class="adv-group">
+        <p class="adv-heading">PhD alumni</p>
+        <ul class="adv-list">
+          <li><span class="adv-years">2021–2025</span> &nbsp;<strong>Jianhua Wang</strong> — Signal-processing-based design methods for radioastronomy</li>
+          <li><span class="adv-years">2022–2025</span> &nbsp;<strong>Nawel Meftah</strong> — Smart metasurfaces for communications</li>
+          <li><span class="adv-years">2022–2025</span> &nbsp;<strong>Nawel Arab</strong> — Maximum likelihood and statistical learning for dynamic imaging in radio astronomy</li>
+          <li><span class="adv-years">2022–2025</span> &nbsp;<strong>Dana El Hajjar</strong> — Recursive learning for incomplete SAR displacement time series for Earth deformation observation</li>
+          <li><span class="adv-years">2020–2023</span> &nbsp;<strong>Yassine Mhiri</strong> — Statistical signal processing for radio-telescopes</li>
+          <li><span class="adv-years">2017–2020</span> &nbsp;<strong>Bruno Mériaux</strong> — Robust processing for multi-sensor systems</li>
+          <li><span class="adv-years">2017–2020</span> &nbsp;<strong>Abdallah Bouiba</strong> — Adaptive detection for embedded anti-collision radar</li>
+          <li><span class="adv-years">2016–2019</span> &nbsp;<strong>Rayen BenAbdellah</strong> — Statistical signal processing utilizing low-rank priors with detection applications</li>
+          <li><span class="adv-years">2015–2018</span> &nbsp;<strong>Virginie Ollier</strong> — Robust calibration methods in radio astronomy</li>
+          <li><span class="adv-years">2015–2018</span> &nbsp;<strong>Lucien Bacharach</strong> — Fundamental error limits for signal estimation with rupture points</li>
+          <li><span class="adv-years">2013–2016</span> &nbsp;<strong>Astrid Rubiano Fonseca</strong> — Smart control of soft robotic hand prosthesis</li>
+          <li><span class="adv-years">2012–2016</span> &nbsp;<strong>Xin Zhan</strong> — MIMO radar direction estimation and performance analysis</li>
+        </ul>
+      </div>
+
+      <div class="adv-group">
+        <p class="adv-heading">Postdoctoral alumni</p>
+        <ul class="adv-list">
+          <li><span class="adv-years">2024–2025</span> &nbsp;<strong>Shuyu Dong</strong> (Paris-Saclay University – L2S) — Causal structure learning and statistics</li>
+          <li><span class="adv-years">2020–2021</span> &nbsp;<strong>Alexandre Hippert-Ferrer</strong> — Handling missing data in SAR displacement time series</li>
+          <li><span class="adv-years">Feb.–Aug. 2020</span> &nbsp;<strong>Rémi André</strong> — Semi-parametric regression using empirical likelihood</li>
+          <li><span class="adv-years">2013–2014</span> &nbsp;<strong>Tao Bao</strong> — Cramér-Rao bound investigation for near-field source localization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ALL PUBLICATIONS — liste complète (reprise de l'ancien site).
+       AJOUTER UNE ENTRÉE : copiez un bloc <li class="ap-item">…</li>
+       à l'intérieur de la bonne catégorie.
+       ============================================================ -->
+  <section id="all-publications" class="reveal">
+    <div class="wrap">
+      <div class="section-head"><h2>All publications</h2></div>
+      <p class="lede">The complete record — books, book chapters, preprints, journal articles and conference papers.</p>
+
+      <h3 class="ap-cat">Books</h3>
+      <ul class="ap-list">
+          <li class="ap-item"><p class="ap-text">J-P. Delmas, <span class="self">M. N. El Korso</span>, F. Pascal, and S. Fortunati, "Elliptically Symmetric Distributions in Signal Processing and Machine Learning," Springer Nature, December 2024</p><div class="ap-links"><a href="https://link.springer.com/book/10.1007/978-3-031-52116-4" target="_blank" rel="noopener">Springer</a></div></li>
+      </ul>
+      <h3 class="ap-cat">Book Chapters</h3>
+      <ul class="ap-list">
+          <li class="ap-item"><p class="ap-text">A. Hippert-Ferrer, <span class="self">M. N. El Korso</span>, "Robust estimation with missing data for elliptical distributions," Springer Nature, December 2024</p><div class="ap-links"><a href="https://link.springer.com/chapter/10.1007/978-3-031-52116-4_4" target="_blank" rel="noopener">Springer</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Haardt, M. Pesavento, F. Röemer, <span class="self">M. N. El Korso</span>, "Subspace Methods and Exploitation of Special Array Structures," Academic Press Library in Signal Processing, Elsevier, 2014</p></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El korso</span>, R. Boyer, P. Larzabal et al., "French SKA White Book - The French community towards the Square Kilometre Array," SKA-France Coordination, 2017</p><div class="ap-links"><a href="https://ska-france.oca.eu/images/SKA-France-Media/FWB_051017.pdf" target="_blank" rel="noopener">PDF</a></div></li>
+      </ul>
+      <h3 class="ap-cat">Preprints</h3>
+      <ul class="ap-list">
+          <li class="ap-item"><p class="ap-text">M. Cherifi et al., "Amortized Variational Inference for Logistic Regression with Missing Covariates," arXiv:2603.21244</p><div class="ap-links"><a href="https://arxiv.org/abs/2603.21244" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">P. Meena et al., "Radar Detection through Rectified Flow Matching," arXiv:2603.18995</p><div class="ap-links"><a href="https://arxiv.org/abs/2603.18995" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Cherifi, <span class="self">M. N. El Korso</span>, A. Hippert-Ferrer, Y. Yan, "Robust Expectation-Maximization for Covariance Estimation in SIRV Models with Missing Data: Application to InSAR Time Series," arXiv:2606.22628</p><div class="ap-links"><a href="https://arxiv.org/abs/2606.22628" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Savida, <span class="self">M. N. El Korso</span>, "Robust Covariance Estimation for Cell-wise Contaminated and Partially Observed Data via Expectation Maximization Algorithm," submitted</p></li>
+          <li class="ap-item"><p class="ap-text">D. El Hajjar et al., "Sliding Interferometric Phase Linking for Sequential Phase Estimation in long InSAR time-series," submitted</p></li>
+          <li class="ap-item"><p class="ap-text">N. Arab, <span class="self">M. N. El Korso</span>, I. Vin, P. Larzabal, "Stochastic Expectation Maximization for Robust State-Space Radio Interferometric Imaging," arXiv:2606.23944</p><div class="ap-links"><a href="https://arxiv.org/abs/2606.23944" target="_blank" rel="noopener">arXiv</a></div></li>
+      </ul>
+      <h3 class="ap-cat">Journal Papers</h3>
+      <ul class="ap-list">
+          <li class="ap-item"><p class="ap-text">A. Nguyen, A. Bertrand, S. Le Hégarat-Mascle, E. Aldea, F. Florin, <span class="self">M. N. El Korso</span>, R. Lustrat, "Fisher-Rao Sensitivity for Out-of-Distribution Detection in Deep Neural Networks," ICLR 2026</p><div class="ap-links"><a href="https://openreview.net/forum?id=GEtOzC4MIi" target="_blank" rel="noopener">OpenReview</a></div></li>
+          <li class="ap-item"><p class="ap-text">A. Hippert-Ferrer, A. Sportisse, A. Javaheri, <span class="self">M. N. El Korso</span>, D. Palomar, "Missing Data in Signal Processing &amp; Machine Learning: Models, Methods &amp; Modern Approaches," IEEE Signal Processing Magazine, 2026</p><div class="ap-links"><a href="https://arxiv.org/abs/2506.01696" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, <span class="self">M. N. El Korso</span>, L. Bacharach, P. Larzabal, "Learning-based probabilistic subarrays switching for robust low-cost interferometric imaging," IEEE Transactions on Computational Imaging, Vol. 12, pp. 491-504, 2026</p></li>
+          <li class="ap-item"><p class="ap-text">M. Cherifi, <span class="self">M. N. El Korso</span>, A. Mesloub, "EM Based Inference for Logistic Models with Missing Mixed-Effects Covariates," Signal Processing Journal, Elsevier, Vol. 246, September 2026, p. 110631</p></li>
+          <li class="ap-item"><p class="ap-text">M. Cherifi, <span class="self">M. N. El Korso</span>, A. Mesloub, S. Fortunati, L. Ferro-Famil, "Multiclass Logistic Regression with Missing Gaussian Mixture Covariates," Circuits, Systems, and Signal Processing, Springer Nature, 2026</p></li>
+          <li class="ap-item"><p class="ap-text">D. El Hajjar, G. Ginolhac, Y. Yan, <span class="self">M. N. El Korso</span>, "Sequential Covariance Fitting for InSAR Phase Linking," IEEE Transactions on Geoscience and Remote Sensing, Vol. 63, 2025</p><div class="ap-links"><a href="https://arxiv.org/abs/2502.09248" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Buroku, "Direction finding by learning-assisted programmable metasurface," Journal of Applied Physics, Vol. 138, 134902, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">M. Cherifi, X. Zhu, <span class="self">M. N. El Korso</span>, A. Mesloub, "Maximum likelihood for logistic regression model with incomplete and hybrid-type covariates," IEEE Signal Processing Letters, Vol. 32, pp. 2808-2812, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Arab, Y. Mhiri, I. Vin, <span class="self">M. N. El Korso</span>, P. Larzabal, "Unrolled expectation maximization algorithm for radio interferometric imaging in presence of non gaussian interferences," Signal Processing, Elsevier, Vol. 237, 110035, 2025</p><div class="ap-links"><a href="https://hal.science/hal-04966761v1/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Cherifi, <span class="self">M. N. El Korso</span>, S. Fortunati, A. Mesloub, L. Ferro-Famil, "Robust inference with incompleteness for logistic regression model," Signal Processing, Elsevier, Vol. 236, November 2025, p. 110027</p><div class="ap-links"><a href="https://hal.science/hal-05048834v1/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, <span class="self">M. N. El Korso</span>, L. Bacharach, P. Larzabal, "Low-rank EM-based imaging for large-scale switched interferometric arrays," IEEE Signal Processing Letters, Vol. 32, pp. 41-45, 2025</p><div class="ap-links"><a href="https://hal.science/hal-04840415/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">C. Cano, <span class="self">M. N. El Korso</span>, E. Chaumette, P. Larzabal, "Kalman filter for dynamic source power estimation based on empirical covariances," Signal Processing, Elsevier, Vol. 230, 109868, May 2025</p></li>
+          <li class="ap-item"><p class="ap-text">D. El Hajjar, G. Ginolhac, Y. Yan, <span class="self">M. N. El Korso</span>, "Robust sequential phase estimation using Multi-temporal SAR image series," IEEE Signal Processing Letters, Vol. 32, pp. 811-815, December 2025</p></li>
+          <li class="ap-item"><p class="ap-text">X. Ren, Y. Wei, L. Zhu, <span class="self">M. N. El Korso</span>, "Traffic and scenario adaptive OFDM-IM communication for vehicular networks," Sensors, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, <span class="self">M. N. El Korso</span>, L. Bacharach, P. Larzabal, "RFI-aware and low-cost maximum likelihood imaging for high-sensitivity radio telescopes," IEEE Signal Processing Letters, Vol. 31, pp. 2960-2964, October 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Enhanced-resolution learning-based direction of arrival estimation by programmable metasurface," Advanced Electronic Materials, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Programmable meta-reflector for multiple tasks in intelligent connected environments," Advanced Materials Technologies, Vol. 9, Issue 12, June 18, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">Y. Mhiri, <span class="self">M. N. El Korso</span>, A. Breloy, P. Larzabal, "Regularized maximum likelihood estimation for radio interferometric imaging in the presence of radiofrequency interferences," Signal Processing, Elsevier, Vol. 220, 109430, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, L. Bacharach, P. Larzabal, <span class="self">M. N. El Korso</span>, "A comparison of antenna placement criteria based on the Cramér-Rao and Barankin bounds for interferometer arrays," Signal Processing, Elsevier, Vol. 219, 109404, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">C. Cano, N. Arab, E. Chaumette, P. Larzabal, <span class="self">M. N. El Korso</span>, I. Vin, "Kalman filter for radio source power and direction of arrival estimation," European Association for Signal Processing Special Issue, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, A. Breloy, <span class="self">M. N. El Korso</span>, P. Forster, "Matched and Mismatched Estimation of Kronecker Product of Linearly Structured Scatter Matrices under Elliptical Distributions," IEEE Transactions on Signal Processing, Vol. 69, pp. 603-616</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-03039552/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">H. Abadlia, M. ammar, K. Ibrahim, <span class="self">M. N. El Korso</span>, M. Abdelmadjid, "Coherent wide band signals direction of arrival finding based on subspace methods," Circuits, Systems, and Signal Processing, Springer, Vol. 42, pp. 1663-1684, 2023</p></li>
+          <li class="ap-item"><p class="ap-text">A. Hippert-Ferrer, <span class="self">M. N. El Korso</span>, A. Breloy, G. Ginolhac, "Robust low-rank covariance matrix estimation with a general pattern of missing values," Signal Processing, Vol. 195, June 2022, p. 108460</p><div class="ap-links"><a href="https://arxiv.org/abs/2107.10505" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">Y. Mhiri, <span class="self">M. N. El Korso</span>, A. Breloy, P. Larzabal, "Multifrequency Array Calibration in Presence of Radio Frequency Interferences," Signal Processing, Elsevier, Vol. 199, October 2022, p. 108613</p><div class="ap-links"><a href="https://arxiv.org/abs/2202.07297" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">A. Hippert-Ferrer, <span class="self">M. N. El Korso</span>, A. Breloy, G. Ginolhac, "Robust Mean and Covariance Matrix Estimation Under Heterogeneous Mixed-Effects Model with Missing Values," Signal Processing, Vol. 188, November 2021, p. 108195</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-03156771/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">I. Kakouche, A. Maali, <span class="self">M. N. El Korso</span>, A. Mesloub, M. S. Azzaz, "Non-contact Measurement of Respiration and Heart Rates Based on Subspace Methods and Iterative Notch Filter Using UWB Impulse Radar," Journal of Physics D: Applied Physics, Vol. 55, No. 3, 2021</p><div class="ap-links"><a href="https://www.researchgate.net/publication/355013536_Non-contact_measurement_of_respiration_and_heart_rates_based_on_subspace_methods_and_iterative_notch_filter_using_UWB_impulse_radar" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">I. Kakouche, A. Maali, <span class="self">M. N. El Korso</span>, A. Mesloub, M. S. Azzaz, "Fast and low cost-effective method for non-contact respiration rate tracking using UWB impulse radar," Sensors and Actuators: A. Physical, Elsevier, Vol. 329, October 2021, p. 112814</p></li>
+          <li class="ap-item"><p class="ap-text">I. Kakouche, A. Maali, <span class="self">M. N. El Korso</span>, A. Mesloub, M. S. Azzaz, "Joint Vital Signs and Position Estimation of Multiples Persons using SIMO Radar," Electronics, Vol. 2, Issue 10, 2021</p><div class="ap-links"><a href="https://www.mdpi.com/2079-9292/10/22/2805/htm" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdallah, A. Breloy, <span class="self">M. N. El Korso</span>, D. Lautru, "Bayesian Signal Subspace Estimation with Compound Gaussian Sources," Signal Processing, Vol. 167, 2020, p. 107310</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-02305119/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, <span class="self">M. N. El Korso</span>, A. Renaux, J.-Y. Tourneret, "A Hybrid Lower Bound for Parameter Estimation of Signals with Multiple Change-Points," IEEE Transactions on Signal Processing, Vol. 67, Issue 5, pp. 1267-1279, March 1, 2019</p><div class="ap-links"><a href="https://hal-centralesupelec.archives-ouvertes.fr/hal-02078353/file/%5BJ30%5D.pdf" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, "Asymptotic Performance of Complex M-estimators for Multivariate Location and Scatter Estimation," IEEE Signal Processing Letters, Vol. 26, Issue 2, pp. 367-371, February 2019</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-01968961/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdellah, A. Miam, A. Breloy, A. Taylor, <span class="self">M. N. El Korso</span>, D. Lutru, "Detection Methods Based on Structured Covariance Matrices for Multivariate SAR Images Processing," IEEE Geoscience and Remote Sensing Letters, Vol. 16, Issue 7, pp. 1160-1164, July 2019</p><div class="ap-links"><a href="https://ammarmian.github.io/publication/grsl_2019/" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, "Robust Estimation of Structured Scatter Matrices in (Mis)matched Models," Signal Processing Journal, Elsevier, Vol. 165, December 2019, pp. 163-174</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-02165848/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">A. Bouiba, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, M. Hamadouche, M. Lagha, "Two dimensional robust source localization under non-Gaussian noise," Circuits, Systems &amp; Signal Processing, Springer</p></li>
+          <li class="ap-item"><p class="ap-text">J. P. Delmas, H. Gazzah, <span class="self">M. N. El Korso</span>, "Improved localization of near-field sources using a realistic signal propagation model and optimally-placed sensors," Digital Signal Processing, Vol. 95, 2019, p. 102579</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-02387919/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, X. Zhang, <span class="self">M. N. El Korso</span>, M. Pesavento, "Iterative Marginal Maximum Likelihood DOD and DOA Estimation for MIMO Radar in the Presence of SIRP Clutter," Signal Processing Journal, Elsevier, Vol. 155, February 2019, pp. 384-390</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-01888650v2/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, A. Ferrari, R. Boyer, P. Larzabal, "Robust distributed calibration of radio interferometers with direction dependent distortions," Signal Processing Journal, Elsevier, Vol. 153, December 2018, pp. 348-354</p><div class="ap-links"><a href="https://arxiv.org/pdf/1807.11738.pdf" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Brossard, <span class="self">M. N. El Korso</span>, M. Pesavento, R. Boyer, P. Larzabal, S. Wijnholds, "Parallel Multi-Wavelength Calibration Algorithm for Radio Astronomical Arrays," Signal Processing Journal, Elsevier, Vol. 145, April 2018, pp. 258-271</p><div class="ap-links"><a href="http://www.wijnholds.nl/publications/pdf/201804_SP.pdf" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">A. Mennad, S. Fortunati, <span class="self">M. N. El Korso</span>, A. Younsi, A. M. Zoubir, A. Renaux, "Slepian-Bangs-type formulas and the related Misspecified Cramér-Rao Bounds for Complex Elliptically Symmetric distributions," Signal Processing Journal, Elsevier, Vol. 142, January 2018, pp. 320-329</p><div class="ap-links"><a href="https://hal-univ-paris10.archives-ouvertes.fr/hal-01654607/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">T. Boukaba, <span class="self">M. N. El Korso</span>, A. M. Zoubir, D. Berkani, "Bootstrap Based Sequential Detection in Non-Gaussian Correlated Clutter," Progress in Electromagnetics Research Journal, Vol. 81, pp. 125-140, 2018</p><div class="ap-links"><a href="http://www.jpier.org/PIERC/pierc81/12.17111608.pdf" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, R. Boyer, P. Larzabal, M. Pesavento, "Robust Calibration of Radio Interferometers in Non-Gaussian Environment," IEEE Transactions on Signal Processing, Vol. 65, Issue 21, pp. 5649-5660, November 2017</p><div class="ap-links"><a href="https://arxiv.org/pdf/1612.02023.pdf" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">E. Chaumette, A. Renaux, <span class="self">M. N. El Korso</span>, "A class of Weiss-Weinstein bounds and its relationship with the Bobrovsky-Mayer-Wolf-Zakai bounds," IEEE Transactions on Information Theory, Vol. 63, Issue 4, pp. 2226-2240, April 2017</p></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, A. Renaux, <span class="self">M. N. El Korso</span>, E. Chaumette, "Weiss-Weinstein bound on multiple change-points estimation," IEEE Transactions on Signal Processing, Vol. 65, Issue 10, pp. 2686-2700, May 2017</p></li>
+          <li class="ap-item"><p class="ap-text">X. Zhang, <span class="self">M. N. El Korso</span>, M. Pesavento, "MIMO radar target localization and performance evaluation under SIRP clutter," Signal Processing Journal, Elsevier, Vol. 130, January 2017, pp. 217-232</p><div class="ap-links"><a href="https://hal-univ-paris10.archives-ouvertes.fr/hal-01421513/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">A. Mennad, A. Younsi, <span class="self">M. N. El Korso</span>, A. M. Zoubir, "Adaptive Detection of Range-Spread Target in Compound-Gaussian Clutter Without Secondary Data," Digital Signal Processing, Elsevier, Vol. 60, January 2017, pp. 90-98</p><div class="ap-links"><a href="https://www.researchgate.net/publication/308125010_Adaptive_detection_of_range-spread_target_in_compound-Gaussian_clutter_without_secondary_data" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">J.-P. Delmas, <span class="self">M. N. El Korso</span>, H. Gazzah, M. Castella, "CRB analysis of planar antenna array for optimizing near-field source localization," Signal Processing Journal, Elsevier, Vol. 127, October 2016, pp. 117-134</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-01355428/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, P. Larzabal, B.-H. Fleury, "Estimation Performance for the Bayesian Hierarchical Linear Model," IEEE Signal Processing Letters, Vol. 23, April 2016, pp. 488-492</p></li>
+          <li class="ap-item"><p class="ap-text">T. Bao, <span class="self">M. N. El Korso</span>, H. Ouslimani, "Cramér-Rao Bound and Statistical Resolution Limit Investigation for Near-field Source Localization," Digital Signal Processing, Elsevier, Vol. 48, January 2016, pp. 137-147</p><div class="ap-links"><a href="https://hal-univ-paris10.archives-ouvertes.fr/hal-01421517/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">C. Ren, <span class="self">M. N. El Korso</span>, J. Galy, E. Chaumette, P. Larzabal, A. Renaux, "On the Accuracy and Resolvability of Vector Parameter Estimates," IEEE Transactions on Signal Processing, Vol. 62, Issue 14, pp. 3682-3694, July 2014</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, A. Renaux, R. Boyer, S. Marcos, "Deterministic Performance Bounds on the Mean Square Error for Near Field Source Localization," IEEE Transactions on Signal Processing, Vol. 61, Issue 4, pp. 871-877, February 2013</p><div class="ap-links"><a href="https://hal-supelec.archives-ouvertes.fr/hal-00771449/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical resolution limit for source localization with clutter interference in a MIMO radar context," IEEE Transactions on Signal Processing, Vol. 60, Issue 2, pp. 987-992, February 2012</p><div class="ap-links"><a href="https://www.nts.tu-darmstadt.de/media/nts/publications/2012_6/Statistical_Resolution_Nabil.pdf" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "On the Asymptotic Resolvability Of Two Point Sources in Known Subspace Interference Using a GLRT-Based Framework," Signal Processing, Elsevier, Vol. 92, Issue 10, pp. 2471-2481, October 2012</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical Analysis of Achievable Resolution Limit in the Near Field Source Localization Context," Signal Processing, Elsevier, Vol. 92, Issue 2, pp. 547-552, February 2012</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical resolution limit for the multidimensional harmonic retrieval model: Hypothesis test and Cramér-Rao bound approaches," EURASIP Journal on Advances in Signal Processing, June 2011, pp. 1-14</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-00579002/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical resolution limit of the uniform linear cocentered orthogonal loop and dipole array," IEEE Transactions on Signal Processing, Vol. 59, Issue 1, pp. 425-431, January 2011</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-02508685/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Conditional and unconditional Cramér-Rao bounds for near-field source localization," IEEE Transactions on Signal Processing, Vol. 58, Issue 5, pp. 2901-2907, May 2010</p></li>
+      </ul>
+      <h3 class="ap-cat">Conference Papers</h3>
+      <ul class="ap-list">
+          <li class="ap-item"><p class="ap-text">A. Ibrahim, C. Ren, I. Hinostroza, A. Breloy, <span class="self">M. N. El Korso</span>, "Robust covariance matrix estimation for uniform rectangular array," IEEE ICASSP, Barcelona, Spain, 2026</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Intelligent Metasurface for Direction Finding," IEEE CAMA, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">D. El Hajjar, A. Breloy, G. Ginolhac, <span class="self">M. N. El Korso</span>, Y. Yan, "An efficient approach for estimating the phases of large SAR image time series," EUSIPCO, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Arab, I. Vin, <span class="self">M. N. El Korso</span>, P. Larzabal, "Expectation Maximization for Robust State-Space Radio Interferometric Imaging," EUSIPCO, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">S. Dong, <span class="self">M. N. El Korso</span>, A. Tenenhaus, L. Le Brusquet, "Learning Measurement Models via Subspace Identification and Clustering," IEEE SSP, 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Direction Finding by Reconfigurable Metasurface via Machine Learning," IEEE AP-S/URSI 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Mobile Target Tracking With a Reconfigurable Metasurface in the X-Band," IEEE AP-S/URSI 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Programmable Metasurface for DOA Estimation from Mobile Objects and Wave Redirection," EuCAP 2025</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Direction-Of-Arrival Estimation by Metasurface Assisted by Deep Learning for IoT Systems," EuCAP 2025</p></li>
+          <li class="ap-item"><p class="ap-text">C. Cano, E. Chaumette, P. Larzabal, <span class="self">M. N. El Korso</span>, "Kalman filter for dynamic estimation of stochastic radio source power and DoA," Asilomar 2024</p></li>
+          <li class="ap-item"><p class="ap-text">N. Arab, Y. Mhiri, I. Vin, <span class="self">M. N. El Korso</span>, P. Larzabal, "Unrolled Expectation Maximization for Sparse Radio Interferometric Imaging," EUSIPCO, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">D. El Hajjar, Y. Yan, G. Ginolhac, <span class="self">M. N. El Korso</span>, "Sequential phase linking: progressive integration of SAR images for operational phase estimation," IEEE IGARSS, 2024</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Direction-Of-Arrival Estimation by a Programmable Metasurface," EuCAP 2024</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Electronic beam steering using a reconfigurable metasurface," International Conference on Metamaterials, Photonic Crystals and Plasmonics (META'23), 2023</p></li>
+          <li class="ap-item"><p class="ap-text">N. Meftah, B. Ratni, <span class="self">M. N. El Korso</span>, N. Burokur, "Métasurface reconfigurable pour l'estimation de la direction d'arrivée," Dixième Conférence Plénière du GDR ONDES, 2023</p></li>
+          <li class="ap-item"><p class="ap-text">N. Arab, C. Cano, I. Vin, <span class="self">M. N. El Korso</span>, E. Chaumette, P. Larzabal, "Kalman filter for dynamic imaging based on complex empirical covariances," IEEE CAMSAP, 2023</p></li>
+          <li class="ap-item"><p class="ap-text">C. Cano, N. Arab, E. Chaumette, P. Larzabal, <span class="self">M. N. El Korso</span>, "Kalman filter for radio astronomy dynamic imaging based on empirical covariances," AeroSpace 2023</p></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, L. Bacharach, <span class="self">M. N. El Korso</span>, P. Larzabal, "Antenna sub-array switching strategy for low-cost &amp; high-resolution radio-astronomical imaging," ICSPCC 2023</p></li>
+          <li class="ap-item"><p class="ap-text">H. Brehier, A. Breloy, <span class="self">M. N. El Korso</span>, S. Kumar, "Robust and globally sparse PCA via majorization-minimization and variable splitting," ICASSP 2023</p></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, L. Bacharach, <span class="self">M. N. El Korso</span>, P. Larzabal, "Barankin bound vs Cramér-Rao bound for interferometric-like array design at low SNR," EUSIPCO 2023</p></li>
+          <li class="ap-item"><p class="ap-text">N. Arab, C. Cano, I. Vin, <span class="self">M. N. El Korso</span>, E. Chaumette, P. Larzabal, "Filtre de Kalman à base de matrices de covariance empiriques : application à l'imagerie dynamique en radioastronomie," GRETSI 2023</p></li>
+          <li class="ap-item"><p class="ap-text">J. Wang, Y. Mhiri, L. Bacharach, <span class="self">M. N. El Korso</span>, P. Larzabal, "Borne Barankin vs Borne Cramér-Rao pour la géométrie de réseaux d'antennes en radioastronomie," GRETSI 2023</p></li>
+          <li class="ap-item"><p class="ap-text">Y. Mhiri, <span class="self">M. N. El Korso</span>, A. Breloy, P. Larzabal, "Imagerie radio-interférométrique robuste par dépliement neuronal," GRETSI 2023</p></li>
+          <li class="ap-item"><p class="ap-text">Y. Mhiri, <span class="self">M. N. El Korso</span>, A. Breloy, P. Larzabal, "A Robust EM Algorithm for Radio Interferometric Imaging in The Presence of Outliers," IEEE Workshop on Signal Processing Systems (SiPS), pp. 1-5, 2022</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-03823295/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">Y. Mhiri, <span class="self">M. N. El Korso</span>, A. Breloy, P. Larzabal, "Algorithme SAGE pour la calibration robuste de radio-interféromètres en présence d'interférences," GRETSI, 2022</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-03775526/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">Y. Mhiri, <span class="self">M. N. El Korso</span>, L. Bacharach, A. Breloy, P. Larzabal, "Expectation-Maximization Based Direction of Arrival Estimation Under a Mixture of Noise," EUSIPCO, 2021</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-03156738/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Trinh-Hoang, <span class="self">M. N. El Korso</span>, M. Pesavento, "A partially-relaxed robust DOA estimator under non-Gaussian low-rank interference and noise," ICASSP, 2021</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-03144957/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">A. Bouiba, T. Boukaba, <span class="self">M. N. El Korso</span>, S. A. Saidj, "Multiple targets detection in compound gaussian clutter without secondary data," CEE, 2021</p></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, A. Breloy, <span class="self">M. N. El Korso</span>, P. Forster, "Efficient Estimation of Kronecker Product of Linear Structured Scatter Matrices under t-distribution," EUSIPCO, 2020</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-02873816/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">M. Brossard, V. Ollier, <span class="self">M. N. El Korso</span>, R. Boyer, P. Larzabal, "Fast decentralized multi-frequency calibration for DOA estimation with distributed sensors," DAT, 2020</p><div class="ap-links"><a href="https://arxiv.org/pdf/2002.11498.pdf" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, A. Breloy, <span class="self">M. N. El Korso</span>, P. Forster, "Modified Sparse Subspace Clustering for Radar Detection in Non-stationary Clutter," IEEE CAMSAP, 2019</p><div class="ap-links"><a href="https://hal.archives-ouvertes.fr/hal-02292685v2/document" target="_blank" rel="noopener">PDF</a></div></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, J. Galy, E. Chaumette, F. Vincent, A. Renaux, <span class="self">M. N. El Korso</span>, "An example of non-standard behavior of a maximum likelihood estimator in the large sample regime," IEEE CAMSAP, 2019</p></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdallah, A. Breloy, <span class="self">M. N. El Korso</span>, D. Lautru, "Bayesian Robust Signal Subspace Estimation in Non-Gaussian Environment," EUSIPCO'19</p></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdallah, A. Breloy, A. Taylor, <span class="self">M. N. El Korso</span>, D. Lautru, "Signal Subspace Change Detection in Structured Covariance Matrices," EUSIPCO'19</p></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, A. Breloy, <span class="self">M. N. El Korso</span>, P. Forster, J.-P. Ovarlez, "On the Recursions of Robust COMET Algorithm for Convexly Structured Shape Matrix," EUSIPCO'19</p></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, "Estimation robuste de matrices de dispersion structurées pour des modèles bien/mal spécifiés," GRETSI, 2019</p></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdallah, A. Breloy, <span class="self">M. N. El Korso</span>, D. Lautru, "Détection de changement de sous-espace signal dans des matrices de covariance structurées," GRETSI, 2019</p></li>
+          <li class="ap-item"><p class="ap-text">B. Mériaux, C. Ren, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, "Une version récursive de RCOMET pour l'estimation robuste de matrices de forme à structure convexe," GRETSI, 2019</p></li>
+          <li class="ap-item"><p class="ap-text">A. Boudehane, R. Boyer, V. Ollier, <span class="self">M. N. El Korso</span>, A. Ferrari, P. Larzabal, "Performance bound for robust array calibration in radio interferometry," GRETSI, 2019</p></li>
+          <li class="ap-item"><p class="ap-text">A. Mian, L. Bacharach, G. Ginolhac, A. Renaux, <span class="self">M. N. El Korso</span>, J.-P. Ovarlez, "Designing SAR Images Change-Point Estimation Strategies using an MSE Lower Bound," ICASSP 2019</p></li>
+          <li class="ap-item"><p class="ap-text">A. Abdellah, <span class="self">M. N. El Korso</span>, T. Boukaba, "Robust joint relaxed maximum likelihood calibration and direction of arrivals estimation with sparse arrays," CEE 2019</p></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, A. Ferrari, R. Boyer, P. Larzabal, "Bayesian Calibration Using Different Prior Distributions: An Iterative Maximum a Posteriori Approach for Radio Interferometers," EUSIPCO'18, Rome, Italy</p></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, A. Renaux, <span class="self">M. N. El Korso</span>, "Prior Influence on Weiss-Weinstein Bounds for Multiple Change-Point Estimation," EUSIPCO'18, Rome, Italy</p></li>
+          <li class="ap-item"><p class="ap-text">A. Breloy, <span class="self">M. N. El Korso</span>, A. Panahi, H. Krim, "Robust Subspace Clustering for Radar Detection," EUSIPCO'18, Rome, Italy</p></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, A. Ferrari, R. Boyer, P. Larzabal, "Robust calibration of radio interferometers in multi-frequency scenario," ICASSP 2018, Calgary, Canada</p></li>
+          <li class="ap-item"><p class="ap-text">B. Meriaux, C. Ren, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, "Efficient estimation of scatter matrix with convex structure under t-distribution," ICASSP 2018, Calgary, Canada</p></li>
+          <li class="ap-item"><p class="ap-text">B. Meriaux, C. Ren, <span class="self">M. N. El Korso</span>, A. Breloy, P. Forster, "Robust-COMET for Covariance Estimation in Convex Structures: Algorithm and Statistical Properties," IEEE CAMSAP, Curaçao, 2017</p></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdallah, A. Breloy, <span class="self">M. N. El Korso</span>, D. Lautru, H. Ouslimani, "Minimum Mean Square Distance Estimation of Subspaces in presence of Gaussian sources with application to STAP detection," NCMIP, Paris, 2017</p></li>
+          <li class="ap-item"><p class="ap-text">A. Taylor, A. Breloy, <span class="self">M. N. El Korso</span>, "Détection d'anomalie de composantes principales pour des cibles mobiles étendues en SAR," GRETSI 2017</p></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, R. Boyer, P. Larzabal, M. Pesavento, "Algorithme de calibration robuste dans un contexte de radio interférométrie," GRETSI 2017</p></li>
+          <li class="ap-item"><p class="ap-text">T. Bao, A. Breloy, <span class="self">M. N. El Korso</span>, K. Abed-Meraim, H. H. Ouslimani, "Performance analysis of direction-of-arrival and polarization estimation using a non-uniform linear COLD array," DAT-2017, Algiers, Algeria</p></li>
+          <li class="ap-item"><p class="ap-text">R. Ben Abdallah, A. Breloy, <span class="self">M. N. El Korso</span>, D. Lautru, H. Ouslimani, "Estimation de sous-espaces en présence de sources gaussiennes avec application à la détection STAP," GRETSI 2017</p></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, <span class="self">M. N. El Korso</span>, A. Renaux, J.-Y. Tourneret, "A Bayesian Lower Bound for Parameter Estimation of Poisson Data Including Multiple Changes," ICASSP 2017, New Orleans, USA</p><div class="ap-links"><a href="https://arxiv.org/abs/1609.03423" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, G. Bibiche, A. Renaux, <span class="self">M. N. El Korso</span>, "Bornes bayésiennes pour la localisation d'un point de rupture : application à des processus exponentiels," GRETSI 2017</p></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, R. Boyer, <span class="self">M. N. El Korso</span>, P. Larzabal, "Borne Bayésienne pour les systèmes large-échelle : cas d'un bruit à queue lourde," GRETSI 2017</p></li>
+          <li class="ap-item"><p class="ap-text">M. Brossard, <span class="self">M. N. El Korso</span>, M. Pesavento, R. Boyer, P. Larzabal, "Calibration of Radio Interferometers Using a Sparse DOA Estimation Framework," EUSIPCO 2016, Budapest, Hungary</p><div class="ap-links"><a href="http://arxiv.org/pdf/1603.00263.pdf" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, R. Boyer, P. Larzabal, M. Pesavento, "Relaxed concentrated MLE for robust calibration of radio interferometers," EUSIPCO 2016, Budapest, Hungary</p><div class="ap-links"><a href="http://arxiv.org/pdf/1603.01070.pdf" target="_blank" rel="noopener">arXiv</a></div></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, R. Boyer, <span class="self">M. N. El Korso</span>, P. Larzabal, "Bayesian Lower Bounds for Dense or Sparse (Outlier) Noise in the RMT Framework," IEEE SAM-2016, Rio, Brazil</p></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, <span class="self">M. N. El Korso</span>, A. Renaux, "Weiss-Weinstein bound for an abrupt unknown frequency change," IEEE SSP-16, Palma de Mallorca, 2016</p></li>
+          <li class="ap-item"><p class="ap-text">V. Ollier, <span class="self">M. N. El Korso</span>, R. Boyer, P. Larzabal, M. Pesavento, "Joint ML calibration and DOA estimation with separated arrays," ICASSP 2016, Shanghai, China</p></li>
+          <li class="ap-item"><p class="ap-text">X. Zhang, <span class="self">M. N. El Korso</span>, M. Pesavento, "Maximum likelihood and maximum a posteriori direction-of-arrival estimation in the presence of SIRP noise," ICASSP 2016, Shanghai, China</p></li>
+          <li class="ap-item"><p class="ap-text">P. Zarka et al., "NenuFAR: Instrument description and science case," IEEE ICATT, Kharkiv, Ukraine, 2015</p></li>
+          <li class="ap-item"><p class="ap-text">L. Bacharach, A. Renaux, <span class="self">M. N. El Korso</span>, E. Chaumette, "Weiss-Weinstein Bound for Change-Point Estimation," IEEE CAMSAP-2015, Cancun, Mexico</p></li>
+          <li class="ap-item"><p class="ap-text">C. Ren, <span class="self">M. N. El Korso</span>, J. Galy, E. Chaumette, P. Larzabal, A. Renaux, "Une nouvelle approche de résolution limite dans le cadre d'estimation paramétrique multidimensionnelle," GRETSI 2015, Lyon, France</p></li>
+          <li class="ap-item"><p class="ap-text">A. Rubiano, J. L. Ramirez, <span class="self">M. N. El Korso</span>, L. Gallimard, N. Jouandeau, O. Polit, "Elbow Flexion And Extension Identification Using Surface Electromyography Signals," EUSIPCO 2015, Nice, France</p></li>
+          <li class="ap-item"><p class="ap-text">C. Ren, <span class="self">M. N. El Korso</span>, J. Galy, E. Chaumette, P. Larzabal, A. Renaux, "Performance bounds under misspecification model for MIMO Radar application," EUSIPCO 2015, Nice, France</p></li>
+          <li class="ap-item"><p class="ap-text">A. Rubiano, J. L. Ramirez, <span class="self">M. N. El Korso</span>, L. Gallimard, N. Jouandeau, O. Polit, "Best Feature Selection and Classification For Elbow Flexion And Extension Movements," NCMIP, Cachan, France, 2015</p></li>
+          <li class="ap-item"><p class="ap-text">J. L. Ramirez, A. Rubiano, N. Jouandeau, <span class="self">M. N. El Korso</span>, L. Gallimard, O. Polit, "Hybrid kinematic model applied to the under-actuated robotic hand prosthesis ProMain-I and experimental evaluation," ICORR, Singapore, 2015</p></li>
+          <li class="ap-item"><p class="ap-text">J. L. Ramirez, A. Rubiano, L. Gallimard, <span class="self">M. N. El Korso</span>, N. Jouandeau, O. Polit, "Modeling and Validation Test of Underactuated Robotic Finger," ECCOMAS 2015, Azores, Portugal</p></li>
+          <li class="ap-item"><p class="ap-text">A. Rubiano, <span class="self">M. N. El Korso</span>, O. Polit, L. Gallimard, N. Jouandeau, "Signal processing for the control of a robotic hand emulated in an embedded system," DFH-UFA'2014, Dresden, Germany</p></li>
+          <li class="ap-item"><p class="ap-text">J. L. Ramirez, <span class="self">M. N. El Korso</span>, O. Polit, L. Gallimard, N. Jouandeau, "Design mathematical modelling and simulation of an artificial muscle for a hand prosthesis," DFH-UFA'2014, Dresden, Germany</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, A. Renaux, P. Forster, "CRLB under K-distributed observation with parameterized mean," IEEE SAM-2014, A Coruña, Spain</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, "On Performance Analysis in Array Processing: Lower Bounds on the Mean Square Error and Statistical Resolution Limit," ICIT 2014, Dubai, UAE</p></li>
+          <li class="ap-item"><p class="ap-text">X. Zhang, <span class="self">M. N. El Korso</span>, M. Pesavento, "MIMO Radar Performance Analysis under K-distributed Clutter," ICASSP-2014, Florence, Italy</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, S. Marcos, "A root-finding technique for direction of arrival estimation," DAT-2014, Algiers, Algeria</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, P. Forster, F. Pascal, P. Larzabal, "Résolution limite dans un contexte de localisation active de sources," GRETSI 2013, Brest, France</p></li>
+          <li class="ap-item"><p class="ap-text">R. Boyer, <span class="self">M. N. El Korso</span>, A. Renaux, S. Marcos, "Coexistence of near-field and far-field sources: The angular resolution limit," NCMIP 2013, Cachan, France</p></li>
+          <li class="ap-item"><p class="ap-text">X. Zhang, <span class="self">M. N. El Korso</span>, M. Pesavento, "Angular resolution limit for deterministic correlated sources," ICASSP-2013, Montreal, Canada</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, F. Pascal, M. Pesavento, "On the resolvability of closely spaced targets using a MIMO radar," IEEE Asilomar 2012, Pacific Grove, California</p></li>
+          <li class="ap-item"><p class="ap-text">X. Zhang, <span class="self">M. N. El Korso</span>, M. Pesavento, "Statistical Resolution Limit for Two Closely Spaced Stochastic Far Field Sources," EUSIPCO 2012, Bucharest, Romania</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, M. Pesavento, "Performance analysis for near field source localization," IEEE SAM-12, Hoboken, NJ</p></li>
+          <li class="ap-item"><p class="ap-text">D. T. Vu, <span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Résolution limite angulaire : approches basées sur la théorie de l'information et sur la théorie de la détection," GRETSI-11, Bordeaux, France</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical Resolution Limit: Application to Passive Polarized Source Localization," DAT-2011, Algiers, Algeria</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical resolution limit for source localization in a MIMO context," ICASSP-11, Prague, Czech Republic</p></li>
+          <li class="ap-item"><p class="ap-text">D. T. Vu, <span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Angular Resolution Limit for Vector Sensor Arrays: Detection and Information Theory Approaches," IEEE SSP-11, Nice, France</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "A GLRT-based framework for the multidimensional statistical resolution limit," IEEE SSP-11, Nice, France</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, A. Renaux, R. Boyer, S. Marcos, "Bornes inférieures de l'erreur quadratique moyenne pour la localisation de sources en champ proche," GRETSI-11, Bordeaux, France</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, S. Marcos, "Sequential Source Localization Using the Projected Companion Matrix Approach," IEEE CAMSAP-09, Aruba</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Statistical resolution limits for multiple parameters of interest and for multiple signals," ICASSP-10, Dallas, TX</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, G. Bouleux, R. Boyer, S. Marcos, "Sequential estimation of the range and the bearing using the zero-forcing MUSIC approach," EUSIPCO-09, Glasgow, Scotland</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, R. Boyer, A. Renaux, S. Marcos, "Non-matrix closed form expressions of the Cramér-Rao bounds for near-field localization parameters," ICASSP-09, Taipei, Taiwan</p></li>
+          <li class="ap-item"><p class="ap-text"><span class="self">M. N. El Korso</span>, G. Bouleux, R. Boyer, S. Marcos, "Estimation séquentielle des paramètres de localisation en champ proche à l'aide de l'approche Zero-Forcing," Colloque GRETSI-09, Dijon, France</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <footer id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <p class="label">Get in touch</p>
+          <h2 style="margin-top:.6rem; font-size:1.6rem;">Contact</h2>
+          <ul class="contact-list">
+            <li><a href="mailto:mohammed.nabil.el-korso@centralesupelec.fr">mohammed.nabil.el-korso@centralesupelec.fr</a></li>
+            <li><a href="tel:+33175317890">+33 1 75 31 78 90</a></li>
+            <li>L2S, CentraleSupélec — 3 rue Joliot-Curie, 91190 Gif-sur-Yvette, France</li>
+          </ul>
+        </div>
+        <div>
+          <p class="label">Elsewhere</p>
+          <ul class="contact-list" style="margin-top:1rem;">
+            <li><a href="https://scholar.google.com/citations?hl=fr&amp;user=JEhRT6kAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+            <li><a href="https://www.linkedin.com/in/nabkorso/" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="colophon">
+        <span>© <span id="year">2026</span> Mohammed Nabil El Korso</span>
+        <span>Last updated August 2026</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Année automatique dans le pied de page
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Menu mobile
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ links.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); });
+    });
+  }
+
+  // Mise en évidence du lien de nav actif au scroll
+  var sections = document.querySelectorAll('main section[id], header[id]');
+  var navAnchors = document.querySelectorAll('.nav-links a');
+  if ('IntersectionObserver' in window && sections.length) {
+    var map = {};
+    navAnchors.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navAnchors.forEach(function(a){ a.classList.remove('is-active'); });
+          link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  // Apparition douce des sections au scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && reveals.length) {
+    var ro = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(el){ ro.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+  // Filet de sécurité : si un élément n'a pas encore été révélé après un
+  // court délai (bloqueur de script, navigateur ancien...), on l'affiche
+  // quand même — le contenu ne doit jamais rester invisible.
+  window.setTimeout(function(){
+    reveals.forEach(function(el){ el.classList.add('is-visible'); });
+  }, 1800);
+</script>
+</body>
+</html>
